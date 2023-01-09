@@ -10,6 +10,7 @@ import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
+import { IconContext } from '@react-icons/all-files'
 
 const ToggleThemeButton = () => {
   const [hasMounted, setHasMounted] = React.useState(false)
@@ -28,7 +29,9 @@ const ToggleThemeButton = () => {
       className={cs('breadcrumb', 'button', !hasMounted && styles.hidden)}
       onClick={onToggleTheme}
     >
-      {hasMounted && isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
+      <IconContext.Provider value={{ size: '20' }}>
+        {hasMounted && isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
+      </IconContext.Provider>
     </div>
   )
 }
